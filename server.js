@@ -31,7 +31,9 @@ const init = () => {
             'Exit'
         ]
     }).then((response) => {
-        switch (response.init) {
+        //console.log(response, "response")
+        //console.log(response.init, "response.init")
+        switch (response.choice) {
             case 'View employees':
                 viewEmployees();
                 break;
@@ -115,7 +117,7 @@ const addEmployee = () => {
         message: "Enter a manager id"
     },
     ]).then((input) => {
-        ms.query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES', input, (err) => {
+        ms.query('INSERT INTO employee SET ?', input, (err) => {
             if (err) throw err;
             console.log(`${input.first_name}, ${input.last_name}, ${input.role_id}, ${input.manager_id}`);
             init();
@@ -140,7 +142,7 @@ const addRole = () => {
         message: "Enter a department id"
     },
     ]).then((input) => {
-        ms.query('INSERT INTO role (title, salary, department_id) VALUES', input, (err) => {
+        ms.query('INSERT INTO role SET ?', input, (err) => {
             if (err) throw err;
             console.log(`${input.title}, ${input.salary}, ${input.department_id}`);
             init();
@@ -165,7 +167,7 @@ const updateEmployee = () => {
         message: "Enter a department id"
     },
     ]).then((input) => {
-        ms.query('INSERT INTO role (title, salary, department_id) VALUES', input, (err) => {
+        ms.query('INSERT INTO role SET ?', input, (err) => {
             if (err) throw err;
             console.log(`${input.title}, ${input.salary}, ${input.department_id}`);
             init();
