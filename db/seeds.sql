@@ -19,10 +19,10 @@ VALUES
 ("Ken", "Griffey Sr", 1, null),
 ("Suzuki", "Ichiro", 2, 1),
 ("Ken", "Griffey Jr", 3, 1),
-("Geno", "Smith", 3, 1),
-("Tyler", "Lockett", 4, null),
-("DK", "Metcalf", 5, 5),
-("Bobby", "Lee", 5, 5),
-("Kevin", "Heart", 6, null),
-("Bert", "Krischer", 7, 8),
-("Tom", "Segura", 7, 8);
+("Geno", "Smith", 4, 1),
+("Tyler", "Lockett", 5, null),
+("DK", "Metcalf", 6, 1),
+("Bobby", "Lee", 7, 5),
+("Kevin", "Heart", 8, null),
+("Bert", "Krischer", 9, 1),
+("Tom", "Segura", 10, 1);
