@@ -1,17 +1,7 @@
-const express = require('express');
+
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
 const conTable = require('console.table');
-const path = require('path');
-const { response } = require('express');
-const Connection = require('mysql2/typings/mysql/lib/Connection');
-const app = express();
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
-const PORT = process.env.PORT || 3001;
-
 
 const ms = mysql.createConnection(
     {
@@ -19,7 +9,9 @@ const ms = mysql.createConnection(
         user: 'root',
         password: '',
         database: 'employee_db'
-    })
+    },
+    console.log('Connected')
+);
 
 const prompt = inquirer.createPromptModule();
 
@@ -69,11 +61,13 @@ const init = () => {
                 break;
 
             case 'Exit':
-                Connection.end();
+                connection.end();
                 break;
         }
-    })
-}
+    });
+};
+
+init();
 
 const viewEmployees = () => {
     ms.query('SELECT * FROM employee', (err, employee) => {
@@ -121,7 +115,7 @@ const addEmployee = () => {
         message: "Enter a manager id"
     },
     ]).then((input) => {
-        ms.query('INSERT INTO employee SET ?', input, (err) => {
+        ms.query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES', input, (err) => {
             if (err) throw err;
             console.log(`${input.first_name}, ${input.last_name}, ${input.role_id}, ${input.manager_id}`);
             init();
@@ -146,7 +140,7 @@ const addRole = () => {
         message: "Enter a department id"
     },
     ]).then((input) => {
-        ms.query('INSERT INTO role SET ?', input, (err) => {
+        ms.query('INSERT INTO role (title, salary, department_id) VALUES', input, (err) => {
             if (err) throw err;
             console.log(`${input.title}, ${input.salary}, ${input.department_id}`);
             init();
@@ -171,7 +165,7 @@ const updateEmployee = () => {
         message: "Enter a department id"
     },
     ]).then((input) => {
-        ms.query('INSERT INTO employee SET ?', input, (err) => {
+        ms.query('INSERT INTO role (title, salary, department_id) VALUES', input, (err) => {
             if (err) throw err;
             console.log(`${input.title}, ${input.salary}, ${input.department_id}`);
             init();

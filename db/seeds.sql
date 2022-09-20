@@ -1,5 +1,3 @@
-
-
 INSERT INTO department (name)
 VALUES 
 ("Under Water Basket Weaving"),
@@ -18,7 +16,7 @@ VALUES
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES 
-("Ken", "Griffey Sr",  1, null),
+("Ken", "Griffey Sr", 1, null),
 ("Suzuki", "Ichiro", 2, 1),
 ("Ken", "Griffey Jr", 3, 1),
 ("Geno", "Smith", 3, 1),
