@@ -63,7 +63,7 @@ const init = () => {
                 break;
 
             case 'Exit':
-                connection.end();
+                process.exit();
                 break;
         }
     });
